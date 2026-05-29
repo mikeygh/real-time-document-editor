@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Document Editor</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <!-- Document List View -->
+    <div id="doc-list-view" class="view">
+      <header>
+        <h1>📝 Documents</h1>
+        <button id="btn-new-doc" class="btn-primary">+ New Document</button>
+      </header>
+      <div id="doc-list"></div>
+    </div>
+
+    <!-- Editor View -->
+    <div id="editor-view" class="view" style="display:none">
+      <header>
+        <button id="btn-back" class="btn-back">← Back</button>
+        <input id="doc-title" type="text" class="doc-title-input" />
+        <span id="connection-status" class="status-dot disconnected" title="Disconnected"></span>
+        <span id="collab-users" class="collab-users"></span>
+      </header>
+      <div id="toolbar" class="toolbar">
+        <button data-action="bold" title="Bold"><strong>B</strong></button>
+        <button data-action="italic" title="Italic"><em>I</em></button>
+        <button data-action="heading" title="Heading">H</button>
+        <button data-action="bulletList" title="Bullet List">•</button>
+        <button data-action="orderedList" title="Ordered List">1.</button>
+        <button data-action="undo" title="Undo">↩</button>
+        <button data-action="redo" title="Redo">↪</button>
+      </div>
+      <div id="editor"></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

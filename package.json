@@ -1,0 +1,42 @@
+{
+  "name": "real-time-document-editor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,yjs,client -c blue,green,yellow \"npm run dev:api\" \"npm run dev:yjs\" \"npm run dev:client\"",
+    "dev:api": "tsx watch server/api.ts",
+    "dev:yjs": "tsx watch server/yjs-server.ts",
+    "dev:client": "vite dev client --port 5173",
+    "build": "vite build client",
+    "db:init": "psql postgresql://postgres:postgres@localhost:5432/docs -f server/schema.sql",
+    "db:create": "createdb docs || true"
+  },
+  "dependencies": {
+    "@tiptap/core": "^2.9.1",
+    "@tiptap/extension-collaboration": "^2.9.1",
+    "@tiptap/extension-collaboration-cursor": "^2.9.1",
+    "@tiptap/pm": "^2.9.1",
+    "@tiptap/starter-kit": "^2.9.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "ioredis": "^5.4.1",
+    "pg": "^8.13.1",
+    "ws": "^8.18.0",
+    "y-prosemirror": "^1.2.6",
+    "y-protocols": "^1.0.6",
+    "y-websocket": "^3.0.0",
+    "yjs": "^13.6.22"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "@types/pg": "^8.20.0",
+    "@types/ws": "^8.5.13",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^6.1.0"
+  }
+}
